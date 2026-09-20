@@ -1,0 +1,4 @@
+well_id,steam_volume_t,injection_pressure_bar,soak_hours,production_cutoff_bopd
+BGW-001,400,30,48,28
+BGW-002,430,32,52,27
+BGW-003,380,29,42,30

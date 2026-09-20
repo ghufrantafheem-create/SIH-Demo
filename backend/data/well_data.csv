@@ -1,0 +1,4 @@
+well_id,production_rate,watercut,pressure_bar,temperature_c,oil_viscosity_cp,reservoir_condition,operating_stage
+BGW-001,42,31,18,62,1850,Heavy oil / low mobility,Production
+BGW-002,38,35,17,61,2010,Cooling / high viscosity,Production
+BGW-003,46,28,20,64,1710,Thermally stimulated,Production
