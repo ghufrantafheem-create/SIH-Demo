@@ -1,12 +1,22 @@
 import axios from 'axios';
-export const API=import.meta.env.VITE_API_URL||'http://localhost:8000/api';
-const api=axios.create({baseURL:API});
-api.interceptors.request.use(c=>{const t=localStorage.getItem('token'); if(t)c.headers.Authorization=`Bearer ${t}`; return c;});
-export const login=(email:string,password:string)=>api.post('/auth/login',{email,password});
-export const signup=(name:string,email:string,password:string)=>api.post('/auth/signup',{name,email,password});
-export const wells=()=>api.get('/wells');
-export const dashboard=(id:string)=>api.get(`/dashboard/${id}`);
-export const cssData=(id:string)=>api.get(`/css/${id}`); export const srpData=(id:string)=>api.get(`/srp/${id}`);
-export const predict=(id:string)=>api.get(`/predictions/${id}`); export const anomalies=(id:string)=>api.get(`/anomalies/${id}`);
-export const optimizeCSS=(id:string)=>api.post(`/optimization/css/${id}`); export const optimizeSRP=(id:string)=>api.post(`/optimization/srp/${id}`);
-export const logout=()=>api.post('/auth/logout');
+export const API = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const api = axios.create({ baseURL: API });
+
+api.interceptors.request.use((c) => {
+  const t = localStorage.getItem('token');
+  if (t) c.headers.Authorization = `Bearer ${t}`;
+  return c;
+});
+
+export const login = (email: string, password: string) => api.post('/auth/login', { email, password });
+export const signup = (name: string, email: string, password: string) => api.post('/auth/signup', { name, email, password });
+export const wells = () => api.get('/wells');
+export const dashboard = (id: string) => api.get(`/dashboard/${id}`);
+export const cssData = (id: string) => api.get(`/css/${id}`);
+export const srpData = (id: string) => api.get(`/srp/${id}`);
+export const predict = (id: string) => api.get(`/predictions/${id}`);
+export const anomalies = (id: string) => api.get(`/anomalies/${id}`);
+export const optimizeCSS = (id: string) => api.post(`/optimization/css/${id}`);
+export const optimizeSRP = (id: string) => api.post(`/optimization/srp/${id}`);
+export const historical = (id?: string, days: number = 90) => api.get('/historical', { params: { well_id: id, days } });
+export const logout = () => api.post('/auth/logout');

@@ -1,23 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-/* Unified High-Tech Petroleum & Mining Industry Theme */
+/* -------------------------------------------------------------------------
+   PetroTwin High-Tech Petroleum & Heavy-Oil Cyber-Industrial Theme
+   Deep Petroleum Obsidian + Holographic Telemetry Cyan + Thermal Steam Flame
+   ------------------------------------------------------------------------- */
 :root {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #e8f2ff;
-  background-color: #060c15;
+  color: #e8f4fc;
+  background-color: #040914;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-primary: #060c15;
-  --card-bg: rgba(9, 20, 34, 0.85);
-  --border-color: rgba(0, 229, 255, 0.22);
+  --bg-primary: #040914;
+  --bg-darker: #02050b;
   --accent-cyan: #00e5ff;
-  --accent-amber: #ffab00;
-  --accent-purple: #a855f7;
+  --accent-blue: #38bdf8;
+  --accent-thermal: #ff9f1c;
+  --accent-amber: #f59e0b;
   --accent-emerald: #10b981;
+  --accent-purple: #c084fc;
 }
 
 * {
@@ -28,126 +32,225 @@ body {
   margin: 0;
   min-width: 320px;
   background-color: var(--bg-primary);
-  color: #e8f2ff;
+  color: #e8f4fc;
   overflow-x: hidden;
+  cursor: default;
 }
 
-/* Glassmorphism card surfaces */
+a, button, input[type="range"], select, .cursor-pointer {
+  cursor: pointer;
+}
+
+/* ---------------- PETROLEUM GLASSIFICATION (FROSTED GLASS) ---------------- */
+
 .glass {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  background: linear-gradient(135deg, rgba(8, 22, 40, 0.72) 0%, rgba(3, 10, 20, 0.88) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.16);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 25px rgba(0, 229, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass:hover {
-  border-color: rgba(0, 229, 255, 0.45);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.18);
+  border-color: rgba(0, 229, 255, 0.38);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(0, 229, 255, 0.12),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.25);
 }
 
-/* Vivid gradient highlights */
+.glass-subtle {
+  background: linear-gradient(135deg, rgba(10, 26, 48, 0.5) 0%, rgba(4, 13, 25, 0.68) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+}
+
+.glass-thermal {
+  background: linear-gradient(135deg, rgba(32, 18, 8, 0.65) 0%, rgba(12, 7, 3, 0.82) 100%);
+  border: 1px solid rgba(255, 159, 28, 0.22);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 200, 100, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+}
+
+.glass-nav {
+  background: rgba(4, 11, 22, 0.88);
+  border-right: 1px solid rgba(0, 229, 255, 0.12);
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.glass-header {
+  background: rgba(4, 11, 22, 0.84);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-pill {
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Glass input fields */
+input, select, textarea {
+  background: rgba(5, 15, 28, 0.8) !important;
+  border: 1px solid rgba(0, 229, 255, 0.16) !important;
+  color: #e8f4fc !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.25s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 
+    0 0 0 3px rgba(0, 229, 255, 0.22),
+    0 0 20px rgba(0, 229, 255, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* High-tech gradient typography */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-amber) 50%, var(--accent-purple) 100%);
+  background: linear-gradient(135deg, #00e5ff 0%, #38bdf8 35%, #ff9f1c 70%, #10b981 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
 }
 
-/* High-tech telemetry grid background */
-.grid-bg {
-  background-image: 
-    radial-gradient(ellipse at top, rgba(0, 229, 255, 0.1), transparent 70%),
-    linear-gradient(rgba(69, 114, 154, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(69, 114, 154, 0.08) 1px, transparent 1px);
-  background-size: 100% 100%, 28px 28px, 28px 28px;
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00e5ff 0%, #38bdf8 60%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
-/* Sleek custom scrollbars */
+.gradient-text-thermal {
+  background: linear-gradient(135deg, #ff9f1c 0%, #f59e0b 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* High-Tech Industrial Grid & Telemetry Backdrop */
+.grid-bg {
+  background-image: 
+    radial-gradient(ellipse 85% 60% at 50% -10%, rgba(0, 229, 255, 0.12), transparent 75%),
+    radial-gradient(ellipse 65% 45% at 85% 85%, rgba(255, 159, 28, 0.08), transparent 70%),
+    radial-gradient(ellipse 55% 55% at 10% 80%, rgba(16, 185, 129, 0.06), transparent 70%),
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Ambient glow orbs */
+.ambient-glow-cyan {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(0, 229, 255, 0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.ambient-glow-thermal {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 159, 28, 0.09) 0%, rgba(255, 159, 28, 0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.ambient-glow-blue {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 70%);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+/* Frosted glass scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(6, 17, 31, 0.5);
+  background: rgba(4, 11, 20, 0.7);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #274563;
+  background: rgba(0, 229, 255, 0.25);
   border-radius: 9999px;
+  backdrop-filter: blur(4px);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
 }
 
 /* Status indicator pulse animation */
 .pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@keyframes pulse {
+@keyframes pulseGlow {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
     opacity: 0.35;
+    transform: scale(0.9);
   }
 }
 
-/* Dynamic steam plume rise animation */
+/* Steam plume rising animation */
 @keyframes steamPlume {
   0% {
     opacity: 0.2;
     transform: translateY(0px) scale(0.9);
   }
   50% {
-    opacity: 0.8;
-    transform: translateY(-15px) scale(1.1);
+    opacity: 0.85;
+    transform: translateY(-16px) scale(1.15);
   }
   100% {
-    opacity: 0.2;
-    transform: translateY(-30px) scale(1.3);
+    opacity: 0.15;
+    transform: translateY(-32px) scale(1.35);
   }
 }
 
 .animate-steam {
-  animation: steamPlume 2.5s ease-in-out infinite;
+  animation: steamPlume 2.4s ease-in-out infinite;
 }
 
-/* Global input & form refinement */
-input, select, textarea {
-  background: rgba(9, 21, 37, 0.85) !important;
-  border: 1px solid rgba(83, 127, 169, 0.3) !important;
-  color: #e8f2ff !important;
-  transition: all 0.2s ease-in-out;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent-cyan) !important;
-  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.25) !important;
-}
-
-/* Monospace font for numerical telemetry readouts */
+/* Monospace font for telemetry readouts */
 code, pre, .font-mono {
   font-family: 'JetBrains Mono', monospace;
-}
-
-/* Custom cursor default hide on fine pointer devices */
-@media (pointer: fine) {
-  body.custom-cursor-active {
-    cursor: none;
-  }
-  body.custom-cursor-active a,
-  body.custom-cursor-active button,
-  body.custom-cursor-active input,
-  body.custom-cursor-active select,
-  body.custom-cursor-active textarea {
-    cursor: none;
-  }
 }

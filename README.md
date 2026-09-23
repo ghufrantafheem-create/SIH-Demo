@@ -1,12 +1,19 @@
-# SIH26120 Digital Twin — CSS & SRP Optimization
+# BagheTwin — Heavy-Oil Digital Twin & Optimization Suite
 
-Prototype built from the supplied SIH26120 reference PDF and the supplied starter ZIP.
+BagheTwin is an AI/ML-driven Digital Twin dashboard for **Cyclic Steam Stimulation (CSS)** and **Sucker Rod Pump (SRP)** heavy-oil well optimization in the **Baghewala Field** (Rajasthan).
+
+## Features & Theme
+- **Glassification UI**: Ultra-modern frosted glass theme with multi-layered translucency, specular light sheen, and crisp responsive layouts.
+- **Real-Time Kinematic Simulation**: Live Sucker Rod Pump (SRP) walking beam mechanical motion, traveling/standing valve kinematics, and real-time Dynagraph load-position card tracing.
+- **CFD Thermal Diffusion Visualizer**: Dynamic Cyclic Steam Stimulation (CSS) heat dispersion plume, steam flow pulse animation, and reservoir viscosity reduction analytics.
+- **Interactive Anomaly Simulator**: Instant simulation of downhole failure modes (Gas Lock, Fluid Pound, Rod Floating Risk).
+- **Normal OS Cursor**: Standard, responsive cursor controls.
 
 ## Stack
-- Frontend: React + TypeScript + Tailwind CSS + Recharts
-- Backend: Python + FastAPI + SQLAlchemy
-- Database: PostgreSQL
-- ML: scikit-learn/joblib-compatible production and anomaly model hooks plus risk-aware optimization services
+- **Frontend**: React + TypeScript + Tailwind CSS + Framer Motion + Recharts + Lucide Icons + Vite
+- **Backend**: Python + FastAPI + SQLAlchemy
+- **Database**: SQLite / PostgreSQL
+- **ML Engine**: Scikit-learn/joblib production forecasting, anomaly classification, and closed-loop optimization solvers
 
 ## Run with Docker
 1. Install Docker Desktop.
@@ -14,12 +21,8 @@ Prototype built from the supplied SIH26120 reference PDF and the supplied starte
 3. Open `http://localhost:5173`
 
 Demo accounts:
-- Admin: `admin@sih26120.local` / `admin123`
-- User: `user@sih26120.local` / `user123`
+- Admin: `admin@baghetwin.local` / `admin123`
+- User: `user@baghetwin.local` / `user123`
 
-## Dataset/model note
-The supplied ZIP did not contain project-specific `well_data.csv`, `css_data.csv`, `srp_data.csv`, `production_model.pkl`, or `anomaly_model.pkl`; it contained placeholders for those assets. This package therefore includes small demo CSVs so the UI is immediately functional and keeps model-loading hooks ready for the real SIH datasets/models. Replace the demo CSVs with the actual datasets and put the trained `.pkl` files in `backend/models/` to use the real models.
-
-## Main flow
-Login → Dashboard → Wells / CSS Optimization / SRP Optimization / Predictions / Anomalies / About Us.
-The dashboard includes the requested top-right profile/username and a fixed sidebar ribbon/menu.
+## Main Flow
+Login → Dashboard (Live Telemetry & Real-Time SRP Kinematics) → Wells → CSS Optimization → SRP Optimization → Predictions → Anomalies → About Us.

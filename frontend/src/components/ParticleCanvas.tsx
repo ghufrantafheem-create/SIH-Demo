@@ -17,10 +17,10 @@ interface ParticleCanvasProps {
 
 export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   speedMultiplier = 1,
-  particleDensity = 65
+  particleDensity = 75
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const mouseRef = useRef<{ x: number; y: number; radius: number }>({ x: -1000, y: -1000, radius: 160 });
+  const mouseRef = useRef<{ x: number; y: number; radius: number }>({ x: -1000, y: -1000, radius: 170 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -55,22 +55,22 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
-    // Unified Oil & Mining Palette
-    const colors = ['#00e5ff', '#ffab00', '#10b981', '#3b82f6', '#a855f7'];
+    // PetroTwin Palette: Laser Telemetry Cyan, Deep Sky, Thermal Steam Amber, Flame Glow, Reservoir Emerald
+    const colors = ['#00e5ff', '#38bdf8', '#ff9f1c', '#f59e0b', '#10b981', '#06b6d4'];
 
     let particles: Particle[] = [];
 
     const initParticles = () => {
       particles = [];
-      const count = Math.min(Math.floor((width * height) / 12500), particleDensity);
+      const count = Math.min(Math.floor((width * height) / 12000), particleDensity);
 
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.7 * speedMultiplier,
-          vy: (Math.random() - 0.5) * 0.7 * speedMultiplier,
-          radius: Math.random() * 2.2 + 1,
+          vx: (Math.random() - 0.4) * 0.8 * speedMultiplier, // slight eastward desert wind drift
+          vy: (Math.random() - 0.6) * 0.6 * speedMultiplier, // thermal convection upward
+          radius: Math.random() * 2.2 + 0.8,
           baseAlpha: Math.random() * 0.45 + 0.25,
           color: colors[Math.floor(Math.random() * colors.length)]
         });
@@ -88,8 +88,10 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         p.x += p.vx * speedMultiplier;
         p.y += p.vy * speedMultiplier;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
 
         const dx = mouseRef.current.x - p.x;
         const dy = mouseRef.current.y - p.y;
@@ -98,15 +100,15 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         if (dist < mouseRef.current.radius) {
           const force = (mouseRef.current.radius - dist) / mouseRef.current.radius;
           const angle = Math.atan2(dy, dx);
-          p.x -= Math.cos(angle) * force * 3;
-          p.y -= Math.sin(angle) * force * 3;
+          p.x -= Math.cos(angle) * force * 3.5;
+          p.y -= Math.sin(angle) * force * 3.5;
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.baseAlpha;
-        ctx.shadowBlur = 6;
+        ctx.shadowBlur = 8;
         ctx.shadowColor = p.color;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -114,10 +116,10 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
-          const maxDist = 120;
+          const maxDist = 115;
 
           if (dist2 < maxDist) {
-            const lineAlpha = (1 - dist2 / maxDist) * 0.18;
+            const lineAlpha = (1 - dist2 / maxDist) * 0.15;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);

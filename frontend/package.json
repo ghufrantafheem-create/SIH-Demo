@@ -1,5 +1,5 @@
 {
-  "name": "sih26120-baghewala-digital-twin",
+  "name": "baghetwin-digital-twin",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^4.3.4",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
@@ -20,6 +21,7 @@
     "recharts": "^2.15.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.0.0",
+    "three": "^0.186.0",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
   },

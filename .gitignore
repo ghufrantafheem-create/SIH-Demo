@@ -24,3 +24,4 @@ app.db
 # OS/editor
 .DS_Store
 .vscode/
+*.tsbuildinfo
